@@ -16,14 +16,19 @@
 
 require_once 'classes/BankAccount.php';
 
-$account = new BankAccount;
+try {
+    $account = new BankAccount;
 
-$account->setOwner('Jean');
+    $account->setOwner('Jean');
 
-echo "Balance : " . $account->getBalance() . "\n"; // 0
-echo "Owner : " . $account->getOwner() . "\n"; // Jean
+    echo "Balance : " . $account->getBalance() . "\n"; // 0
+    echo "Owner : " . $account->getOwner() . "\n"; // Jean
 
-$account->credit(1000);
-$account->debit(200);
+    $account->credit(1000);
+    $account->debit(200);
 
-echo "Balance : " . $account->getBalance() . "\n"; // 800
+    echo "Balance : " . $account->getBalance() . "\n"; // 800
+}
+catch (Exception $e) {
+    echo 'Erreur : ' .$e->getMessage() . "\n";
+}
