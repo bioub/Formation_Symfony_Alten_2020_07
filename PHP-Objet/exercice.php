@@ -14,10 +14,16 @@
  * Le programme suivant doit être fonctionnel
  */
 
+/*
+ * Exercice 2
+ * Transformer le code suivant et le code de BankAccount
+ * pour que owner soit de type Contact et non plus string
+ */
+
 require_once 'classes/BankAccount.php';
 
 try {
-    $account = new BankAccount;
+    $account = new BankAccount();
 
     $account->setOwner('Jean');
 

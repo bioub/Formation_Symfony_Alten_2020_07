@@ -7,6 +7,9 @@ class Contact
     protected $firstName = '';
     protected $lastName = '';
 
+    /** @var Company */
+    protected $company;
+
     /**
      * @return int
      */
@@ -60,6 +63,25 @@ class Contact
         $this->lastName = $lastName;
         return $this;
     }
+
+    /**
+     * @return Company
+     */
+    public function getCompany(): Company
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     * @return Contact
+     */
+    public function setCompany(Company $company): Contact
+    {
+        $this->company = $company;
+        return $this;
+    }
+
 
 
 }
