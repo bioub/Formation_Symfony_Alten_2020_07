@@ -1,5 +1,5 @@
 <?php
-require_once 'classes/Contact.php';
+require_once 'classes/Entity/Contact.php';
 
 $s1 = 'Jean'; // 1 allocation mémoire
 $s2 = $s1; // passage par valeur
@@ -7,7 +7,7 @@ $s2 = $s1; // passage par valeur
 $s2 = 'Eric';
 echo $s1 . "\n"; // Jean
 
-$o1 = new Contact(); // 2 allocations mémoires
+$o1 = new \Ajc\Entity\Contact(); // 2 allocations mémoires
 $o1->setFirstName('Jean');
 
 $o2 = $o1; // passage par référence

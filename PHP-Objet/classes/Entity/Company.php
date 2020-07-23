@@ -1,5 +1,6 @@
 <?php
 
+namespace Ajc\Entity;
 
 class Company
 {

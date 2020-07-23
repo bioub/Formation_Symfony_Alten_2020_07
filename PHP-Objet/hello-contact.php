@@ -1,8 +1,8 @@
 <?php
-require_once 'classes/Contact.php';
+require_once 'classes/Entity/Contact.php';
 
 
-$contact = new Contact();
+$contact = new \Ajc\Entity\Contact();
 
 $contact->setFirstName('Romain')->setLastName('Bohdanowicz');
 var_dump($contact->getFirstName());

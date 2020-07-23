@@ -20,10 +20,10 @@
  * pour que owner soit de type Contact et non plus string
  */
 
-require_once 'classes/BankAccount.php';
+require_once 'classes/Bank/BankAccount.php';
 
 try {
-    $account = new BankAccount();
+    $account = new \Ajc\Bank\BankAccount();
 
     $account->setOwner('Jean');
 

@@ -1,5 +1,5 @@
 <?php
-
+namespace Ajc\Entity;
 
 class Contact
 {

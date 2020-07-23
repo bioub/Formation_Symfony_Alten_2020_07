@@ -1,8 +1,14 @@
 <?php
 
-require_once 'classes/Contact.php';
-require_once 'classes/Company.php';
+use \Ajc\Entity\Company;
+use \Ajc\Entity\Contact;
 
+require_once 'vendor/autoload.php';
+//require_once 'classes/Entity/Contact.php';
+//require_once 'classes/Entity/Company.php';
+
+// Nom simple : Company
+// Fully Qualified ClassName (FQCN ou FQN) : nom avec les préfixes
 $company = new Company();
 $company->setName('formation.tech')->setCity('Paris');
 

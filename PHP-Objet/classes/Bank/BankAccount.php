@@ -1,5 +1,5 @@
 <?php
-
+namespace Ajc\Bank;
 
 class BankAccount
 {
