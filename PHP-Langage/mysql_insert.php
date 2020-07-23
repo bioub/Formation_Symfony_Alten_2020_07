@@ -3,7 +3,7 @@ if ($argc < 3) {
     echo "Il faut utiliser ce programme comme ceci : php mysql_insert.php PRENOM NOM\n";
     exit(1);
 }
-$firstName = "$argv[1]";
+$firstName = $argv[1];
 $lastName = $argv[2];
 
 $dsn = 'mysql:host=localhost;dbname=alten;charset=UTF8';
@@ -28,4 +28,4 @@ $stmt->bindValue('last_name', $lastName);
 
 $stmt->execute();
 
-echo "1 contact créé\n";
+echo $stmt->rowCount() . " contact créé\n";
