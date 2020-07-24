@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Supprimer un contact{% endblock %}
+{% block title %}Contact Delete{% endblock %}
 
 {% block body %}
-    <h1>Supprimer un contact</h1>
+    <h2>Contact Delete</h2>
+    <form>
+        <p>Are you sure to delete Jean Dupont ?</p>
+        <button class="btn btn-danger">Yes</button>
+        <button class="btn btn-default">No</button>
+    </form>
 {% endblock %}

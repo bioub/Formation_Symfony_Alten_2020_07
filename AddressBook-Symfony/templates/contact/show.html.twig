@@ -1,8 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Détails d'un contact{% endblock %}
+{% block title %}Contact details{% endblock %}
 
 {% block body %}
-    <h1>Détails du contact {{ id }}</h1>
-    {{ app.request.get('contactId') }}
+    <h2>Contact details</h2>
+
+    <h3>First name</h3>
+    <p>Jean</p>
+
+    <h3>Last name</h3>
+    <p>Dupont</p>
+
+    <h3>Email</h3>
+    <p>jd@company.com</p>
+
+    <h3>Phone</h3>
+    <p>01 23 45 67 89</p>
 {% endblock %}

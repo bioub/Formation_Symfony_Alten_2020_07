@@ -1,15 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Créer un contact{% endblock %}
+{% block title %}Contact Add{% endblock %}
 
 {% block body %}
-    <h1>Créer un contact</h1>
-{% endblock %}
-
-{% block stylesheets %}
-    <style>
-        body {
-            background-color: beige;
-        }
-    </style>
+    <h2>Contact Add</h2>
+    <form>
+        <div class="form-group">
+            <label for="firstName">First name</label>
+            <input type="text" class="form-control" id="firstName">
+        </div>
+        <div class="form-group">
+            <label for="lastName">Last name</label>
+            <input type="text" class="form-control" id="lastName">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" class="form-control" id="phone">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 {% endblock %}
