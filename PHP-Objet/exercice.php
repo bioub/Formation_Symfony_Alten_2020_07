@@ -20,12 +20,14 @@
  * pour que owner soit de type Contact et non plus string
  */
 
-require_once 'classes/Bank/BankAccount.php';
+require_once 'vendor/autoload.php';
 
 try {
     $account = new \Ajc\Bank\BankAccount();
 
-    $account->setOwner('Jean');
+    $owner = new \Ajc\Entity\Contact();
+    $owner->setFirstName('Romain')->setLastName('Bohdanowicz');
+    $account->setOwner($owner);
 
     echo "Balance : " . $account->getBalance() . "\n"; // 0
     echo "Owner : " . $account->getOwner() . "\n"; // Jean

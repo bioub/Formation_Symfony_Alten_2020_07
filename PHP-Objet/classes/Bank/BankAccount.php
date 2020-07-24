@@ -1,28 +1,34 @@
 <?php
 namespace Ajc\Bank;
 
+use Ajc\Entity\Contact;
+use Exception;
+
 class BankAccount
 {
-    protected $owner = '';
+    /** @var Contact */
+    protected $owner;
     protected $balance = 0;
 
     /**
-     * @return mixed
+     * @return Contact
      */
-    public function getOwner()
+    public function getOwner(): Contact
     {
         return $this->owner;
     }
 
     /**
-     * @param mixed $owner
+     * @param Contact $owner
      * @return BankAccount
      */
-    public function setOwner($owner)
+    public function setOwner(Contact $owner): BankAccount
     {
         $this->owner = $owner;
         return $this;
     }
+
+
 
     /**
      * @return mixed
