@@ -38,3 +38,34 @@ Ajouter dans ces template un balise de titre exemple :
 <h1>Liste des contacts</h1>
 {% endblock %}
 ```
+
+## Exercice Templates
+
+### base.html.twig
+
+Dans le fichier base.html.twig, créer un menu avec un lien vers la page d'index et un lien vers la liste des contacts
+Si vous connaissez la bibliothèque Bootstrap inclure les fichiers CSS et JS comme sur :
+https://getbootstrap.com/docs/4.5/getting-started/introduction/
+
+### contact/list.html.twig
+
+Créer un tableau avec la liste des contacts et des liens vers les page show, update et delete
+
+Les champs d'un contact : id, firstName, lastName, email, phone
+
+### contact/show.html.twig
+
+Afficher simplement le détails du contact (firstName, lastName, email, phone)
+
+### contact/delete.html.twig
+
+Afficher un formulaire avec la phrase : "Etes vous sur de vouloir supprimer le contact {{firstName}} {{lastName}} ?"
+et 2 boutons : Oui / Non
+
+### contact/create.html.twig
+
+Afficher un formulaire avec 4 champs  (firstName, lastName, email, phone)
+
+### contact/update.html.twig
+
+Afficher un formulaire prérempli avec d'ancienne valeurs dans 4 champs  (firstName, lastName, email, phone)

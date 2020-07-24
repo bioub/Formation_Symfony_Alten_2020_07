@@ -3,5 +3,6 @@
 {% block title %}Détails d'un contact{% endblock %}
 
 {% block body %}
-    <h1>Détails d'un contact</h1>
+    <h1>Détails du contact {{ id }}</h1>
+    {{ app.request.get('contactId') }}
 {% endblock %}
