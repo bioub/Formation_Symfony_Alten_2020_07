@@ -6,6 +6,7 @@
 <h1>Welcome to AddressBook</h1>
 
     <a href="{{ path('app_contact_list') }}">Liste des contacts</a>
+    <a href="{{ path('app_index_hello', {name: 'Romain'}) }}">Hello Romain (JSON)</a>
 
     {{ date() | date('H:i:s') }}
 {% endblock %}
