@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Company Details{% endblock %}
+
+{% block body %}
+    <h2>Company Details</h2>
+
+    <p>
+        <b>Name : </b>
+        {{ company.name }}
+    </p>
+
+    {% if company.city %}
+        <p>
+            <b>City : </b>
+            {{ company.city }}
+        </p>
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Company List{% endblock %}
+
+{% block body %}
+    <h2>Company List</h2>
+
+    <div class="list-group">
+        {% for c in companies %}
+        <a href="{{ path('app_company_show', {company: c.id}) }}" class="list-group-item list-group-item-action">
+            {{ c.name }}
+        </a>
+        {% endfor %}
+    </div>
+{% endblock %}
