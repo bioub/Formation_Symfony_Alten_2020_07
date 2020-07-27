@@ -21,7 +21,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/create")
+     * @Route("/create/")
      */
     public function create()
     {
@@ -31,7 +31,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/{contactId}", requirements={"contactId": "[1-9][0-9]*"})
+     * @Route("/{contactId}/", requirements={"contactId": "[1-9][0-9]*"})
      */
     public function show($contactId)
     {
@@ -41,7 +41,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/{contactId}/update", requirements={"contactId": "[1-9][0-9]*"})
+     * @Route("/{contactId}/update/", requirements={"contactId": "[1-9][0-9]*"})
      */
     public function update($contactId)
     {
@@ -51,7 +51,7 @@ class ContactController extends AbstractController
     }
 
     /**
-     * @Route("/{contactId}/delete", requirements={"contactId": "[1-9][0-9]*"})
+     * @Route("/{contactId}/delete/", requirements={"contactId": "[1-9][0-9]*"})
      */
     public function delete($contactId)
     {
