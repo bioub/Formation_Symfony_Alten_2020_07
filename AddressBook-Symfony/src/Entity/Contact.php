@@ -6,6 +6,7 @@ use App\Repository\ContactRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
@@ -20,24 +21,37 @@ class Contact
     protected $id;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=40)
      * @ORM\Column(type="string", length=40)
      */
     protected $firstName;
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=40)
      * @ORM\Column(type="string", length=40)
      */
     protected $lastName;
 
     /**
+     * @Assert\Length(max=80)
+     * @Assert\Email(strict=true)
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     protected $email;
 
     /**
+     * @Assert\Length(max=80)
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     protected $phone;
+
+    /**
+     * @var \DateTime
+     * @ORM\Column(type="date", nullable=true)
+     */
+    protected $birthdate;
 
     /**
      * @var Company
@@ -160,6 +174,18 @@ class Contact
         if ($this->groups->contains($group)) {
             $this->groups->removeElement($group);
         }
+
+        return $this;
+    }
+
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(\DateTimeInterface $birthdate): self
+    {
+        $this->birthdate = $birthdate;
 
         return $this;
     }

@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,10 +34,23 @@ class ContactController extends AbstractController
     /**
      * @Route("/create/")
      */
-    public function create()
+    public function create(Request $request)
     {
-        return $this->render('contact/create.html.twig', [
+        $contactForm = $this->createForm(ContactType::class);
+        $contactForm->handleRequest($request);
 
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $contact = $contactForm->getData(); // Contact
+
+            $manager->persist($contact);
+            $manager->flush();
+
+            return $this->redirectToRoute('app_contact_list');
+        }
+
+        return $this->render('contact/create.html.twig', [
+            'contactForm' => $contactForm->createView(),
         ]);
     }
 

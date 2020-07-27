@@ -1,9 +1,22 @@
 {% extends 'base.html.twig' %}
+{% form_theme contactForm 'bootstrap_4_layout.html.twig'  %}
 
 {% block title %}Contact Add{% endblock %}
 
 {% block body %}
     <h2>Contact Add</h2>
+
+    {{ form_start(contactForm, {attr: {'novalidate': 'novalidate'}}) }}
+    {{ form_row(contactForm.firstName) }}
+    {{ form_row(contactForm.lastName) }}
+    {{ form_row(contactForm.email) }}
+    {{ form_row(contactForm.phone) }}
+    {{ form_row(contactForm.birthdate) }}
+    <div>
+        <button class="btn btn-primary">Add</button>
+    </div>
+    {{ form_end(contactForm) }}
+    {#
     <form>
         <div class="form-group">
             <label for="firstName">First name</label>
@@ -23,4 +36,5 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    #}
 {% endblock %}
