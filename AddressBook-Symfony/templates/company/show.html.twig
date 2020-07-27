@@ -17,4 +17,14 @@
         </p>
     {% endif %}
 
+
+    {% if company.contacts %}
+        <h3>Contacts</h3>
+        <ul>
+            {% for c in company.contacts %}
+            <li>{{ c.firstName }} {{ c.lastName }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 {% endblock %}

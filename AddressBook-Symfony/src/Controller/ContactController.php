@@ -44,8 +44,8 @@ class ContactController extends AbstractController
      */
     public function show($contactId)
     {
-        // $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
-        // $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
+        $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
+        $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
 
         if (!$contact) {
             throw $this->createNotFoundException("Contact $contactId not found");

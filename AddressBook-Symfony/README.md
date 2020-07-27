@@ -96,3 +96,29 @@ Requeter les entités avec le repository et afficher les sociétés dans Twig.
 
 ### Mettre des liens (dans le menu et list)
 
+## Exercice Association Mapping
+
+### Créer une relation OneToOne Self-Referencing
+
+Dans contact, créer une propriété `superior` (de type Contact ou self)
+
+Ajouter une relation OneToOne Self-Referencing comme sur https://www.doctrine-project.org/projects/doctrine-orm/en/2.7/reference/association-mapping.html#one-to-one-self-referencing
+
+Générer les getters/setters et les changements en base de données
+
+Ajouter des liens via phpMyAdmin et dans le template `contact/show.html.twig` afficher le prénom et nom
+de votre supérieur s'il existe.
+
+### Créer une relation ManyToMany
+
+Créer une nouvelle entité `Group` (des groupes de contacts, ex: Amis, Famille, Collègues)
+
+avec 2 propriétés :
+* name (type string 60)
+* description (type text)
+
+Ajouter dans phpMyAdmin des groupes et des liens entre contact et groupe (dans la table de liens)
+
+Coté Contact ajouter une propriété `groups` de type `ManyToMany` et sur la page `contact/show.html.twig`
+afficher les groupes dont fait parti le contact.
+

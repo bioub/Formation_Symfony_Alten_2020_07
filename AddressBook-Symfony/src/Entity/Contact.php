@@ -37,6 +37,12 @@ class Contact
      */
     protected $phone;
 
+    /**
+     * @var Company
+     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="contacts")
+     */
+    protected $company;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,4 +95,17 @@ class Contact
 
         return $this;
     }
+
+    public function getCompany(): ?Company
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?Company $company): self
+    {
+        $this->company = $company;
+
+        return $this;
+    }
+
 }

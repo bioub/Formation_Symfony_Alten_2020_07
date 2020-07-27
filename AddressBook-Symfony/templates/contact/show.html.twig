@@ -20,4 +20,9 @@
         <h3>Phone</h3>
         <p>{{ contact.phone }}</p>
     {% endif %}
+
+    {% if contact.company %}
+        <h3>Company</h3>
+        <p>{{ contact.company.name }}</p>
+    {% endif %}
 {% endblock %}
