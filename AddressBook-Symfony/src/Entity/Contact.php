@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,22 @@ class Contact
      * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="contacts")
      */
     protected $company;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Group")
+     */
+    protected $groups;
+
+    /**
+     * @var Contact
+     * @ORM\OneToOne(targetEntity="App\Entity\Contact")
+     */
+    protected $superior;
+
+    public function __construct()
+    {
+        $this->groups = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +122,44 @@ class Contact
     public function setCompany(?Company $company): self
     {
         $this->company = $company;
+
+        return $this;
+    }
+
+    public function getSuperior(): ?self
+    {
+        return $this->superior;
+    }
+
+    public function setSuperior(?self $superior): self
+    {
+        $this->superior = $superior;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Group[]
+     */
+    public function getGroups(): Collection
+    {
+        return $this->groups;
+    }
+
+    public function addGroup(Group $group): self
+    {
+        if (!$this->groups->contains($group)) {
+            $this->groups[] = $group;
+        }
+
+        return $this;
+    }
+
+    public function removeGroup(Group $group): self
+    {
+        if ($this->groups->contains($group)) {
+            $this->groups->removeElement($group);
+        }
 
         return $this;
     }

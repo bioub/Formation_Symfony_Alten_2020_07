@@ -25,4 +25,18 @@
         <h3>Company</h3>
         <p>{{ contact.company.name }}</p>
     {% endif %}
+
+    {% if contact.superior %}
+        <h3>Superior</h3>
+        <p>{{ contact.superior.firstName }} {{ contact.superior.lastName }}</p>
+    {% endif %}
+
+    {% if contact.groups | length > 0 %}
+        <h3>Groups</h3>
+        <p>
+            {% for g in contact.groups %}
+            <span class="badge badge-pill badge-secondary">{{ g.name }}</span>
+            {% endfor %}
+        </p>
+    {% endif %}
 {% endblock %}
