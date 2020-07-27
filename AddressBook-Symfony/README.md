@@ -69,3 +69,30 @@ Afficher un formulaire avec 4 champs  (firstName, lastName, email, phone)
 ### contact/update.html.twig
 
 Afficher un formulaire prérempli avec d'ancienne valeurs dans 4 champs  (firstName, lastName, email, phone)
+
+## Exercice Doctrine
+
+### Créer un nouveau Controller Company
+
+Créer 2 méthodes template compris avec comme URL :
+
+/companies/ -> list
+/companies/{companyId}/ -> show
+
+### Créer une entity Company
+
+Avec en propriété (id ajouté automatiquement) :
+* id
+* name type string 80
+* city type string 80 nullable true (optionnel)
+
+### Générer la table
+
+Avec la commande doctrine:schema:update (--dump-sql pour vérifier et --force pour créer)
+
+### En s'inspirant de ContactController
+
+Requeter les entités avec le repository et afficher les sociétés dans Twig.
+
+### Mettre des liens (dans le menu et list)
+

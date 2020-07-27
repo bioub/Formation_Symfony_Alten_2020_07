@@ -6,22 +6,16 @@
     <h2>Contacts list</h2>
     <table class="table">
         <tbody>
+            {% for c in contacts %}
             <tr>
-                <td>Jean Dupont</td>
+                <td>{{ c.firstName }} {{ c.lastName }}</td>
                 <td>
-                    <a href="{{ path('app_contact_show', {contactId: 123}) }}" class="btn btn-sm btn-primary">Show</a>
-                    <a href="{{ path('app_contact_update', {contactId: 123}) }}" class="btn btn-sm btn-warning">Update</a>
-                    <a href="{{ path('app_contact_delete', {contactId: 123}) }}" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{{ path('app_contact_show', {contactId: c.id}) }}" class="btn btn-sm btn-primary">Show</a>
+                    <a href="{{ path('app_contact_update', {contactId: c.id}) }}" class="btn btn-sm btn-warning">Update</a>
+                    <a href="{{ path('app_contact_delete', {contactId: c.id}) }}" class="btn btn-sm btn-danger">Delete</a>
                 </td>
             </tr>
-            <tr>
-                <td>Eric Martin</td>
-                <td>
-                    <a href="{{ path('app_contact_show', {contactId: 456}) }}" class="btn btn-sm btn-primary">Show</a>
-                    <a href="{{ path('app_contact_update', {contactId: 456}) }}" class="btn btn-sm btn-warning">Update</a>
-                    <a href="{{ path('app_contact_delete', {contactId: 456}) }}" class="btn btn-sm btn-danger">Delete</a>
-                </td>
-            </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

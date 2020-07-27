@@ -15,27 +15,27 @@ class Contact
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=40)
      */
-    private $firstName;
+    protected $firstName;
 
     /**
      * @ORM\Column(type="string", length=40)
      */
-    private $lastName;
+    protected $lastName;
 
     /**
      * @ORM\Column(type="string", length=80, nullable=true)
      */
-    private $email;
+    protected $email;
 
     /**
      * @ORM\Column(type="string", length=80, nullable=true)
      */
-    private $phone;
+    protected $phone;
 
     public function getId(): ?int
     {
