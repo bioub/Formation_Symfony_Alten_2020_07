@@ -4,9 +4,9 @@
 
 {% block body %}
     <h2>Contact Delete</h2>
-    <form>
+    <form method="post">
         <p>Are you sure to delete Jean Dupont ?</p>
-        <button class="btn btn-danger">Yes</button>
-        <button class="btn btn-default">No</button>
+        <button class="btn btn-danger" name="confirm" value="yes">Yes</button>
+        <button class="btn btn-default" name="confirm" value="no">No</button>
     </form>
 {% endblock %}

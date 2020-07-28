@@ -21,21 +21,18 @@ class Contact
     protected $id;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=40)
+     * @Assert\NotBlank(message="First name is mandatory")
+     * @Assert\Length(max=40, maxMessage="First name should be less than 40 characters")
      * @ORM\Column(type="string", length=40)
      */
     protected $firstName;
 
     /**
-     * @Assert\NotBlank()
-     * @Assert\Length(max=40)
      * @ORM\Column(type="string", length=40)
      */
     protected $lastName;
 
     /**
-     * @Assert\Length(max=80)
      * @Assert\Email(strict=true)
      * @ORM\Column(type="string", length=80, nullable=true)
      */

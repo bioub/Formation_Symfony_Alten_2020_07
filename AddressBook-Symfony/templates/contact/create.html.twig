@@ -5,9 +5,13 @@
 
 {% block body %}
     <h2>Contact Add</h2>
+    {# {{ form(contactForm) }} #}
 
     {{ form_start(contactForm, {attr: {'novalidate': 'novalidate'}}) }}
-    {{ form_row(contactForm.firstName) }}
+    <div class="form-group">
+        {{ form_label(contactForm.firstName) }}
+        {{ form_widget(contactForm.firstName) }}
+    </div>
     {{ form_row(contactForm.lastName) }}
     {{ form_row(contactForm.email) }}
     {{ form_row(contactForm.phone) }}

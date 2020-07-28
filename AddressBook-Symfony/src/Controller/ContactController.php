@@ -77,6 +77,13 @@ class ContactController extends AbstractController
      */
     public function update($contactId)
     {
+        // Exercice :
+        // En vous inspirant de show et de create
+        // creer un formulaire d'update qui mettra à jour l'entity
+        // - pour remplir le formulaire avec le contact utiliser la méthode setData
+        // - la méthode persist fait l'insertion et aussi la suppression
+
+
         // $this->getDoctrine()->getManager(); // écrire des entités
         return $this->render('contact/update.html.twig', [
 
@@ -88,6 +95,13 @@ class ContactController extends AbstractController
      */
     public function delete($contactId)
     {
+        // Exercice :
+        // Récupérer l'objet Request (comme dans update et create)
+        // déterminer si la méthode est get ou post
+        // si la méthode et que request contient une clé confirm et la valeur yes
+        // supprimer le contact :
+        // utiliser find (repository) pour le retrouver
+        // utiliser remove et flush (manager) pour le supprimer
         return $this->render('contact/delete.html.twig', [
 
         ]);
