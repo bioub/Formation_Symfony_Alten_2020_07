@@ -1,26 +1,18 @@
 {% extends 'base.html.twig' %}
+{% form_theme contactForm 'bootstrap_4_layout.html.twig'  %}
 
 {% block title %}Contact Update{% endblock %}
 
 {% block body %}
     <h2>Contact Update</h2>
-    <form>
-        <div class="form-group">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" value="Jean">
-        </div>
-        <div class="form-group">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" value="Dupont">
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" value="jd@company.com">
-        </div>
-        <div class="form-group">
-            <label for="phone">Phone</label>
-            <input type="tel" class="form-control" id="phone" value="01 23 45 67 89">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    {{ form_start(contactForm, {attr: {'novalidate': 'novalidate'}}) }}
+    {{ form_row(contactForm.firstName) }}
+    {{ form_row(contactForm.lastName) }}
+    {{ form_row(contactForm.email) }}
+    {{ form_row(contactForm.phone) }}
+    {{ form_row(contactForm.birthdate) }}
+    <div>
+        <button class="btn btn-primary">Update</button>
+    </div>
+    {{ form_end(contactForm) }}
 {% endblock %}

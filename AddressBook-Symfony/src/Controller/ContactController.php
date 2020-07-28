@@ -75,35 +75,49 @@ class ContactController extends AbstractController
     /**
      * @Route("/{contactId}/update/", requirements={"contactId": "[1-9][0-9]*"})
      */
-    public function update($contactId)
+    public function update($contactId, Request $request)
     {
-        // Exercice :
-        // En vous inspirant de show et de create
-        // creer un formulaire d'update qui mettra à jour l'entity
-        // - pour remplir le formulaire avec le contact utiliser la méthode setData
-        // - la méthode persist fait l'insertion et aussi la suppression
+        $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
+        $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
 
+        $contactForm = $this->createForm(ContactType::class);
+        $contactForm->setData($contact);
+        $contactForm->handleRequest($request);
 
-        // $this->getDoctrine()->getManager(); // écrire des entités
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $contact = $contactForm->getData(); // Contact
+
+            $manager->persist($contact);
+            $manager->flush();
+
+            return $this->redirectToRoute('app_contact_list');
+        }
+
         return $this->render('contact/update.html.twig', [
-
+            'contactForm' => $contactForm->createView(),
         ]);
     }
 
     /**
      * @Route("/{contactId}/delete/", requirements={"contactId": "[1-9][0-9]*"})
      */
-    public function delete($contactId)
+    public function delete($contactId, Request $request)
     {
-        // Exercice :
-        // Récupérer l'objet Request (comme dans update et create)
-        // déterminer si la méthode est get ou post
-        // si la méthode et que request contient une clé confirm et la valeur yes
-        // supprimer le contact :
-        // utiliser find (repository) pour le retrouver
-        // utiliser remove et flush (manager) pour le supprimer
-        return $this->render('contact/delete.html.twig', [
+        $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
+        $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
 
+        if ($request->isMethod('POST')) {
+            if ($request->get('confirm') === 'yes') {
+                $manager = $this->getDoctrine()->getManager();
+                $manager->remove($contact);
+                $manager->flush();
+            }
+            return $this->redirectToRoute('app_contact_list');
+        }
+
+        return $this->render('contact/delete.html.twig', [
+            'contact' => $contact,
         ]);
     }
 }
