@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Company;
 use App\Entity\Contact;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -20,10 +22,12 @@ class ContactType extends AbstractType
             ->add('lastName')
             ->add('email')
             ->add('phone', TelType::class)
-            ->add('birthdate', BirthdayType::class)
-            //->add('company')
-            //->add('groups')
-            //->add('superior')
+            ->add('birthdate', BirthdayType::class, [
+                'widget' => 'single_text',
+            ])
+            ->add('company')
+            ->add('groups')
+            ->add('superior')
         ;
     }
 

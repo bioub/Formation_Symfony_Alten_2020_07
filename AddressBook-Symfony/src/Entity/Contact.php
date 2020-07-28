@@ -72,6 +72,13 @@ class Contact
         $this->groups = new ArrayCollection();
     }
 
+
+
+    public function __toString()
+    {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -125,6 +132,18 @@ class Contact
         return $this;
     }
 
+    public function getBirthdate(): ?\DateTimeInterface
+    {
+        return $this->birthdate;
+    }
+
+    public function setBirthdate(?\DateTimeInterface $birthdate): self
+    {
+        $this->birthdate = $birthdate;
+
+        return $this;
+    }
+
     public function getCompany(): ?Company
     {
         return $this->company;
@@ -133,18 +152,6 @@ class Contact
     public function setCompany(?Company $company): self
     {
         $this->company = $company;
-
-        return $this;
-    }
-
-    public function getSuperior(): ?self
-    {
-        return $this->superior;
-    }
-
-    public function setSuperior(?self $superior): self
-    {
-        $this->superior = $superior;
 
         return $this;
     }
@@ -175,16 +182,15 @@ class Contact
         return $this;
     }
 
-    public function getBirthdate(): ?\DateTimeInterface
+    public function getSuperior(): ?self
     {
-        return $this->birthdate;
+        return $this->superior;
     }
 
-    public function setBirthdate(\DateTimeInterface $birthdate): self
+    public function setSuperior(?self $superior): self
     {
-        $this->birthdate = $birthdate;
+        $this->superior = $superior;
 
         return $this;
     }
-
 }

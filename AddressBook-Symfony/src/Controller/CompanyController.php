@@ -31,6 +31,10 @@ class CompanyController extends AbstractController
      */
     public function show(Company $company)
     {
+        if (!$company) {
+            throw $this->createNotFoundException("Company $contactId not found");
+        }
+
         return $this->render('company/show.html.twig', [
             'company' => $company,
         ]);

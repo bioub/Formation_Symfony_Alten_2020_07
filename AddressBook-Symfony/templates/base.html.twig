@@ -9,6 +9,11 @@
     <body>
         {% include '_menu.html.twig' %}
         <div class="container-fluid mt-3">
+            {% for message in app.request.session.flashBag.get('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+            {% endfor %}
             {% block body %}{% endblock %}
         </div>
         <script src="{{ asset('jquery-3.5.1.js') }}"></script>

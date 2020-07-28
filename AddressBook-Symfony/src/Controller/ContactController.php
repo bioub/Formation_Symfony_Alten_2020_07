@@ -46,6 +46,10 @@ class ContactController extends AbstractController
             $manager->persist($contact);
             $manager->flush();
 
+            $this->addFlash('success', 'Le contact ' .
+                $contact->getFirstName() . ' ' . $contact->getLastName() .
+                ' a bien été créé');
+
             return $this->redirectToRoute('app_contact_list');
         }
 
@@ -80,6 +84,10 @@ class ContactController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
         $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
 
+        if (!$contact) {
+            throw $this->createNotFoundException("Contact $contactId not found");
+        }
+
         $contactForm = $this->createForm(ContactType::class);
         $contactForm->setData($contact);
         $contactForm->handleRequest($request);
@@ -90,6 +98,10 @@ class ContactController extends AbstractController
 
             $manager->persist($contact);
             $manager->flush();
+
+            $this->addFlash('success', 'Le contact ' .
+                $contact->getFirstName() . ' ' . $contact->getLastName() .
+                ' a bien été modifié');
 
             return $this->redirectToRoute('app_contact_list');
         }
@@ -107,12 +119,20 @@ class ContactController extends AbstractController
         $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
         $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
 
+        if (!$contact) {
+            throw $this->createNotFoundException("Contact $contactId not found");
+        }
+
         if ($request->isMethod('POST')) {
             if ($request->get('confirm') === 'yes') {
                 $manager = $this->getDoctrine()->getManager();
                 $manager->remove($contact);
                 $manager->flush();
+                $this->addFlash('success', 'Le contact ' .
+                    $contact->getFirstName() . ' ' . $contact->getLastName() .
+                    ' a bien été supprimé');
             }
+
             return $this->redirectToRoute('app_contact_list');
         }
 

@@ -16,6 +16,9 @@
     {{ form_row(contactForm.email) }}
     {{ form_row(contactForm.phone) }}
     {{ form_row(contactForm.birthdate) }}
+    {{ form_row(contactForm.company) }}
+    {{ form_row(contactForm.groups) }}
+    {{ form_row(contactForm.superior) }}
     <div>
         <button class="btn btn-primary">Add</button>
     </div>
@@ -41,4 +44,16 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     #}
+{% endblock %}
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('select2-4.0.13/dist/css/select2.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('select2-4.0.13/dist/js/select2.js') }}"></script>
+    <script>
+        $('select[multiple]').select2();
+    </script>
 {% endblock %}
