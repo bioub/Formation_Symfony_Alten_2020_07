@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Manager\ContactManager;
+use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,16 +17,32 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ContactController extends AbstractController
 {
+    /** @var LoggerInterface */
+    protected $logger;
+
+    /** @var ContactManager */
+    protected $contactManager;
+
+    /**
+     * ContactController constructor.
+     * @param LoggerInterface $logger
+     * @param ContactManager $contactManager
+     */
+    public function __construct(LoggerInterface $logger, ContactManager $contactManager)
+    {
+        $this->logger = $logger;
+        $this->contactManager = $contactManager;
+    }
+
+
     /**
      * @Route("/")
      */
-    public function list()
+    public function list(LoggerInterface $logger)
     {
-        $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
+        $logger->debug('list method called');
 
-        // $contacts = $repo->findAll(); // SELECT cols FROM contact;
-
-        $contacts = $repo->findBy([], null, 100); // SELECT cols FROM contact LIMIT 100;
+        $contacts = $this->contactManager->findAll();
 
         return $this->render('contact/list.html.twig', [
             'contacts' => $contacts
