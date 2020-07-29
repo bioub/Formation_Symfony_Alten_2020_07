@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Company;
 use App\Form\ContactType;
 use App\Manager\ContactManager;
 use Psr\Log\LoggerInterface;
@@ -43,7 +44,21 @@ class ContactController extends AbstractController
         $contacts = $this->contactManager->findAll();
 
         return $this->render('contact/list.html.twig', [
-            'contacts' => $contacts
+            'contacts' => $contacts,
+            'title' => 'Contacts list'
+        ]);
+    }
+
+    /**
+     * @Route("/by-company/{company}/")
+     */
+    public function listByCompany(Company $company)
+    {
+        $contacts = $this->contactManager->findByCompany($company);
+
+        return $this->render('contact/list.html.twig', [
+            'contacts' => $contacts,
+            'title' => 'Contacts list from ' . $company->getName()
         ]);
     }
 

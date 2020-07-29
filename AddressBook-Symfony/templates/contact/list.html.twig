@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contacts List{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block body %}
-    <h2>Contacts list</h2>
+    <h2>{{ title }}</h2>
     <table class="table">
         <tbody>
             {% for c in contacts %}

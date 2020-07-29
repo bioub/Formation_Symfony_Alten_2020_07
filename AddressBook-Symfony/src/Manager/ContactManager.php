@@ -31,6 +31,12 @@ class ContactManager
         return $repo->findBy([], ['lastName' => 'ASC', 'firstName' => 'ASC'], 100); // SELECT cols FROM contact LIMIT 100;
     }
 
+    public function findByCompany($company)
+    {
+        $repo = $this->doctrine->getRepository(Contact::class); // lire des entités
+        return $repo->findBy(['company' => $company], ['lastName' => 'ASC', 'firstName' => 'ASC'], 100); // SELECT cols FROM contact LIMIT 100;
+    }
+
     public function find($id)
     {
         $repo = $this->doctrine->getRepository(Contact::class);
