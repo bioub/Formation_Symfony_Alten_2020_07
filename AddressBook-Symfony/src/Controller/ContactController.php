@@ -77,7 +77,7 @@ class ContactController extends AbstractController
      */
     public function show($contactId)
     {
-        $this->contactManager->find($contactId);
+        $contact = $this->contactManager->findWithCompany($contactId);
 
         if (!$contact) {
             throw $this->createNotFoundException("Contact $contactId not found");
@@ -94,7 +94,7 @@ class ContactController extends AbstractController
      */
     public function update($contactId, Request $request)
     {
-        $this->contactManager->find($contactId);
+        $contact = $this->contactManager->find($contactId);
 
         if (!$contact) {
             throw $this->createNotFoundException("Contact $contactId not found");
@@ -126,7 +126,7 @@ class ContactController extends AbstractController
      */
     public function delete($contactId, Request $request)
     {
-        $this->contactManager->find($contactId);
+        $contact = $this->contactManager->find($contactId);
 
         if (!$contact) {
             throw $this->createNotFoundException("Contact $contactId not found");

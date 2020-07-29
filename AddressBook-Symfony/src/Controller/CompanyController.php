@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Company;
+use App\Manager\CompanyManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -11,14 +12,24 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CompanyController extends AbstractController
 {
+    /** @var CompanyManager */
+    protected $companyManager;
+
+    /**
+     * CompanyController constructor.
+     * @param CompanyManager $companyManager
+     */
+    public function __construct(CompanyManager $companyManager)
+    {
+        $this->companyManager = $companyManager;
+    }
+
     /**
      * @Route("/")
      */
     public function list()
     {
-        $repo = $this->getDoctrine()->getRepository(Company::class);
-
-        $companies = $repo->findBy([], null, 100);
+        $companies = $this->companyManager->findAll();
 
         return $this->render('company/list.html.twig', [
             'companies' => $companies,
@@ -27,12 +38,14 @@ class CompanyController extends AbstractController
 
 
     /**
-     * @Route("/{company}/", requirements={"companyId": "[1-9][0-9]*"})
+     * @Route("/{companyId}/", requirements={"companyId": "[1-9][0-9]*"})
      */
-    public function show(Company $company)
+    public function show($companyId)
     {
+        $company = $this->companyManager->find($companyId);
+
         if (!$company) {
-            throw $this->createNotFoundException("Company $contactId not found");
+            throw $this->createNotFoundException("Company $companyId not found");
         }
 
         return $this->render('company/show.html.twig', [
