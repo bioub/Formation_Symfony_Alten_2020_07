@@ -3,7 +3,7 @@
 
 namespace Ajc\Logger;
 
-use Ajc\Writer\Writer;
+use Ajc\Writer\WriterInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
@@ -11,7 +11,7 @@ class Logger implements LoggerInterface
 {
     protected $writer;
 
-    public function __construct(Writer $writer)
+    public function __construct(WriterInterface $writer)
     {
         $this->writer = $writer;
     }

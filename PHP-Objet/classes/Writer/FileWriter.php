@@ -4,7 +4,7 @@
 namespace Ajc\Writer;
 
 
-class FileWriter implements Writer
+class FileWriter implements WriterInterface
 {
     protected $handle;
 

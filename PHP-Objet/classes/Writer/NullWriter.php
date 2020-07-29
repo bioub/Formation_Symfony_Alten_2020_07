@@ -4,7 +4,7 @@
 namespace Ajc\Writer;
 
 
-class NullWriter implements Writer
+class NullWriter implements WriterInterface
 {
     public function write($message) {
 

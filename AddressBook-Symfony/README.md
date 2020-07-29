@@ -122,3 +122,21 @@ Ajouter dans phpMyAdmin des groupes et des liens entre contact et groupe (dans l
 Coté Contact ajouter une propriété `groups` de type `ManyToMany` et sur la page `contact/show.html.twig`
 afficher les groupes dont fait parti le contact.
 
+
+## Exercice Services/Service Container
+
+Créer une classe CompanyManager dans src/Manager
+
+Ajouter une propriété $companyRepository de type \App\Repository\CompanyRepository
+
+Générer un constructeur qui reçoit le $companyRepository en arguments et qui l'affecte à la propriété (à générer depuis PHPStorm)
+
+Ajouter 2 méthodes findAll et find inspirées de ContactManager
+
+Dans CompanyController créer une propriété $companyManager de type \App\Manager\CompanyManager
+
+Injecter la dépendance en générant le constructeur (comme dans CompanyManager)
+
+Dans les méthodes list et show appeler les méthodes du manager.
+
+ 

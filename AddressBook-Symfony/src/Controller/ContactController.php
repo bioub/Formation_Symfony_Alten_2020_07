@@ -2,12 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Manager\ContactManager;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -58,11 +56,9 @@ class ContactController extends AbstractController
         $contactForm->handleRequest($request);
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
             $contact = $contactForm->getData(); // Contact
 
-            $manager->persist($contact);
-            $manager->flush();
+            $this->contactManager->save($contact);
 
             $this->addFlash('success', 'Le contact ' .
                 $contact->getFirstName() . ' ' . $contact->getLastName() .
@@ -81,8 +77,7 @@ class ContactController extends AbstractController
      */
     public function show($contactId)
     {
-        $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
-        $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
+        $this->contactManager->find($contactId);
 
         if (!$contact) {
             throw $this->createNotFoundException("Contact $contactId not found");
@@ -99,8 +94,7 @@ class ContactController extends AbstractController
      */
     public function update($contactId, Request $request)
     {
-        $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
-        $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
+        $this->contactManager->find($contactId);
 
         if (!$contact) {
             throw $this->createNotFoundException("Contact $contactId not found");
@@ -111,11 +105,9 @@ class ContactController extends AbstractController
         $contactForm->handleRequest($request);
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            $manager = $this->getDoctrine()->getManager();
             $contact = $contactForm->getData(); // Contact
 
-            $manager->persist($contact);
-            $manager->flush();
+            $this->contactManager->save($contact);
 
             $this->addFlash('success', 'Le contact ' .
                 $contact->getFirstName() . ' ' . $contact->getLastName() .
@@ -134,8 +126,7 @@ class ContactController extends AbstractController
      */
     public function delete($contactId, Request $request)
     {
-        $repo = $this->getDoctrine()->getRepository(Contact::class); // lire des entités
-        $contact = $repo->find($contactId); // SELECT cols FROM contact WHERE id = :contactId
+        $this->contactManager->find($contactId);
 
         if (!$contact) {
             throw $this->createNotFoundException("Contact $contactId not found");
@@ -143,9 +134,8 @@ class ContactController extends AbstractController
 
         if ($request->isMethod('POST')) {
             if ($request->get('confirm') === 'yes') {
-                $manager = $this->getDoctrine()->getManager();
-                $manager->remove($contact);
-                $manager->flush();
+                $this->contactManager->remove($contact);
+
                 $this->addFlash('success', 'Le contact ' .
                     $contact->getFirstName() . ' ' . $contact->getLastName() .
                     ' a bien été supprimé');

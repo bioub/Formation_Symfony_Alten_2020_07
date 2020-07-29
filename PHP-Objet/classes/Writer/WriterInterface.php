@@ -4,7 +4,7 @@
 namespace Ajc\Writer;
 
 
-interface Writer
+interface WriterInterface
 {
     public function write($message);
 }

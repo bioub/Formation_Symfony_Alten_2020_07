@@ -8,8 +8,14 @@
 
 require_once 'vendor/autoload.php';
 
-$writer = new \Ajc\Writer\FileWriter('app.log', 'a');
+$writer = new \Ajc\Writer\EchoWriter();
 $writer->write('Coucou 1');
 $writer->write('Coucou 2');
 $writer->write('Coucou 3');
 $writer->write('Coucou 4');
+
+function useWriter(\Ajc\Writer\WriterInterface $writer) {
+    $writer->write('TEST');
+}
+
+useWriter($writer);
