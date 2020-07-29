@@ -139,4 +139,20 @@ Injecter la dépendance en générant le constructeur (comme dans CompanyManager
 
 Dans les méthodes list et show appeler les méthodes du manager.
 
+ ## Exercice Repository et Twig Extension
+ 
+ Dans `ContactController` créer une nouvelle méthode listByCompany accessible via
+ la Route `/contacts/by-company/{companyId}/`
+ 
+ Cette méthode du controller devra appeler une méthode de `ContactManager` `findByCompany(2)`
+ le manager devra appeler une méthode du repository `findByCompany(2)` écrite en DQL
+ 
+ La méthode `listByCompany` pourrait utiliser le templates `contact/list` pour afficher les résultats.
+ 
+ Utiliser la commande `make:twig-extension` pour créer une nouvelle extension `CompanyExtension`
+ 
+ Cette extension devra définir une fonction companyItems() qui remplacera les lignes 20 à 22 de `_menu.html.twig`
+ 
+ Dans cette fonction appeler la méthode `findAll()` de CompanyManager (et donc injecter companyManager).
+ Pour générer le lien vers la route, inspirez vous de `vendor/symfony/twig-bridge/Extension/RoutingExtension.php`
  
