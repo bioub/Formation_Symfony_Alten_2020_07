@@ -156,3 +156,22 @@ Dans les méthodes list et show appeler les méthodes du manager.
  Dans cette fonction appeler la méthode `findAll()` de CompanyManager (et donc injecter companyManager).
  Pour générer le lien vers la route, inspirez vous de `vendor/symfony/twig-bridge/Extension/RoutingExtension.php`
  
+ ## Exercice Tests PHPUnit
+ 
+ ### Test unitaire
+ 
+ Créer une classe `tests\Entity\CompanyTest.php` avec la `commande make:unit-test`
+ 
+ Y écrire 2 tests :
+ 
+ * testInitialValues() vérifier que les valeurs initiales de toutes les propriétés soient NULL
+ * testGetSetName() vérifier qu'en appelant setName, le retour de getName soit correct / et vérifier de setName retourne $this
+ 
+ ### Test fonctionnels
+ 
+ Créer une classe `tests\Controller\CompanyControllerTest` avec la `commande make:functional-test`
+ 
+ Y écrire 2 tests :
+ 
+ Le test de list et le test de show en utilisant un mock ou un spy avec Prophecy.
+ 
