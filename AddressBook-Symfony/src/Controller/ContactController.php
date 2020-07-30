@@ -67,6 +67,8 @@ class ContactController extends AbstractController
      */
     public function create(Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $contactForm = $this->createForm(ContactType::class);
         $contactForm->handleRequest($request);
 
@@ -109,6 +111,8 @@ class ContactController extends AbstractController
      */
     public function update($contactId, Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $contact = $this->contactManager->find($contactId);
 
         if (!$contact) {
@@ -141,6 +145,8 @@ class ContactController extends AbstractController
      */
     public function delete($contactId, Request $request)
     {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+
         $contact = $this->contactManager->find($contactId);
 
         if (!$contact) {

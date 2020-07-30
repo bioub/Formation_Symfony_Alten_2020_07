@@ -11,8 +11,10 @@
                 <td>{{ c.firstName }} {{ c.lastName }}</td>
                 <td>
                     <a href="{{ path('app_contact_show', {contactId: c.id}) }}" class="btn btn-sm btn-primary">Show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <a href="{{ path('app_contact_update', {contactId: c.id}) }}" class="btn btn-sm btn-warning">Update</a>
                     <a href="{{ path('app_contact_delete', {contactId: c.id}) }}" class="btn btn-sm btn-danger">Delete</a>
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}

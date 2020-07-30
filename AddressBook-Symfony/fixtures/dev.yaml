@@ -24,3 +24,4 @@ App\Entity\Contact:
     superior: '50%? @contact*'
     company: '50%? @company*'
     groups: '<numberBetween(0, 3)>x @group*'
+
