@@ -1,0 +1,26 @@
+App\Entity\Group:
+  group1:
+    name: Familly
+    description: '50%? <sentence()>'
+  group2:
+    name: Friends
+    description: '50%? <sentence()>'
+  group3:
+    name: Collegues
+    description: '50%? <sentence()>'
+
+App\Entity\Company:
+  company{1..5}:
+    name: '<company()>'
+    city: '50%? <city()>'
+
+App\Entity\Contact:
+  contact{1..100}:
+    firstName: '<firstName()>'
+    lastName: '<lastName()>'
+    email: '50%? <email()>'
+    phone: '50%? <phoneNumber()>'
+    birthdate: '50%? <dateTimeBetween("-120 years", "now")>'
+    superior: '50%? @contact*'
+    company: '50%? @company*'
+    groups: '<numberBetween(0, 3)>x @group*'

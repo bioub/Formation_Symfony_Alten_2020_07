@@ -36,3 +36,5 @@ services:
     #     class: App\Twig\AlertExtension
     # tags:
     #         - twig.extension
+    Nelmio\Alice\Loader\SimpleFileLoader:
+        alias: nelmio_alice.file_loader.simple

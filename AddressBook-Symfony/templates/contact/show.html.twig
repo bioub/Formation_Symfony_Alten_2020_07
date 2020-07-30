@@ -21,6 +21,11 @@
         <p>{{ contact.phone }}</p>
     {% endif %}
 
+    {% if contact.birthdate %}
+        <h3>Birthdate</h3>
+        <p>{{ contact.birthdate | date('d/m/Y') }}</p>
+    {% endif %}
+
     {% if contact.company %}
         <h3>Company</h3>
         <p>{{ contact.company.name }}</p>

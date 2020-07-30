@@ -63,7 +63,7 @@ class Contact
 
     /**
      * @var Contact
-     * @ORM\OneToOne(targetEntity="App\Entity\Contact")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Contact")
      */
     protected $superior;
 
