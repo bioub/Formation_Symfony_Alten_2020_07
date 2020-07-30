@@ -20,7 +20,7 @@ class ContactManager
      * ContactManager constructor.
      * @param ManagerRegistry $doctrine
      */
-    public function __construct(ManagerRegistry $doctrine)
+    public function __construct(ManagerRegistry $doctrine = null)
     {
         $this->doctrine = $doctrine;
     }
