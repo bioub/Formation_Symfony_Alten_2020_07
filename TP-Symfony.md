@@ -113,3 +113,8 @@ Transformer author dans l'entité Post en une association vers `User` (il faudra
 
 Dans le formulaire de création et d'update récupérer le User connecté et le passer à setAuthor avant l'appel à PostManager.
 
+## Tests automatisés
+
+Ecrire des tests unitaires pour Post et User
+
+Ecrire des tests fonctionnels pour PostController
